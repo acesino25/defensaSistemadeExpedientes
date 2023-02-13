@@ -7,5 +7,7 @@ export const palette = {
     heavycontrast: '#A68C6F',
     vulnerable: '#F5ED9A',
     archivado: '#D0DDF9',
-    grisclaro: '#C3CFE0'
+    grisclaro: '#C3CFE0',
+    rojo: '#E36862',
+    gris: '#A4C2E0'
 }

@@ -149,6 +149,7 @@ const FormCreateExp = () => {
                 <select id='fechaAudiencia' 
                 name='fechaAudiencia' 
                 onChange={(e)=>SetExpCreate({...expCreate, [e.target.name]:[e.target.value]})}>
+                    <option>10 días hábiles, recuerda</option>
                     {
                         fechas == null ? (<option value="false">Loading...</option>) : (fechas.map((fecha)=>{
 

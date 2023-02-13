@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Swal from 'sweetalert2'
 import { UserContext, useUserContext } from '../../context/UserContext'
 import { palette } from '../../themes/colors'
@@ -23,6 +23,14 @@ const ExpedienteResultado = ({resultado}) => {
 
     const {user} = useUserContext()
 
+    /* useState */
+    const emptyState = {
+      idEspecial: '',
+      estado: '',
+      descripcion: ''
+    }
+    const [estado, setEstado] = useState('')
+
     /* HANDLE CLICK */
 
     const handleClick = () => {
@@ -43,15 +51,45 @@ const ExpedienteResultado = ({resultado}) => {
             html:   concat,
             showCancelButton: true,
             confirmButtonText: 'Actualizar estado',
+            input: 'text',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+              console.log(estado)
+              return fetch(`http://127.0.0.1:8000/estado/${user.id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({idEspecial: resultado.id, estado: login, descripcion: ''}),
+            }).then(response => {
+                  if (!response.ok) {
+                    throw new Error(response.statusText)
+                  }
+                  return response.json()
+                })
+                .catch(error => {
+                  Swal.showValidationMessage(
+                    `Request failed: ${error}`
+                  )
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
           }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info')
+              Swal.fire({
+                title: `Actualizado`
+              })
             }
           })
         }
+
+
+
+
+        /* The request */
 
         wretch(`http://127.0.0.1:8000/expediente/estados/${resultado.id}, ${user.id}`)
         .get()
