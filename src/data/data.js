@@ -38,4 +38,4 @@ export const meses = [
     }
 ]
 
-export const server = '10.27.101.64:8000'
+export const server = '192.168.1.8:8000'

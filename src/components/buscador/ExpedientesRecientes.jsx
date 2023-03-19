@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import Swal from 'sweetalert2'
 import wretch from "wretch"
+import { useUserContext } from '../../context/UserContext'
 import { server } from '../../data/data'
 import ExpedienteResultadoUltimos from './ExpedienteResultadoUltimos'
 
 const ExpedientesRecientes = () => {
+
+    
 
     /* useState Resultado */
 

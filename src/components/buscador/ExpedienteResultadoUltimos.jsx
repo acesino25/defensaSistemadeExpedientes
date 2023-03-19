@@ -2,6 +2,8 @@ import { array } from 'prop-types'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import Swal from 'sweetalert2'
+import wretch from "wretch"
+import { server } from '../../data/data'
 import { useExpContext } from '../../context/ExpCreateContext'
 import { useUserContext } from '../../context/UserContext'
 import { palette } from '../../themes/colors'
@@ -19,6 +21,81 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
 
     const {user, setUser} = useUserContext()
     const {expCreate, SetExpCreate} = useExpContext()
+
+    /* HANDLE CLICK */
+
+    const handleClickState = () => {
+        console.log(resultado)
+
+        /* Handle de response got from the api */
+        const handleResponse = (estados) =>
+        {
+            var concat = ""
+            estados.map((estado)=>{
+                concat += `<div style="background: ${palette.grisclaro}; display: flex; justify-content: center; align-items: center; flex-direction: column;"> ${estado.estado} 
+                <div style="display: flex; justify-content: center; align-items: center;"><p style="font-size: 10px; text-align: center">${estado.fecha}</p></div>
+                </div>`
+            })
+            
+            Swal.fire({
+            title: `${resultado.datos.apellido.toUpperCase()}, ${resultado.datos.nombres} C/ `,
+            html:   concat,
+            showCancelButton: true,
+            confirmButtonText: 'Actualizar estado',
+            input: 'text',
+            inputAttributes: {
+              autocapitalize: 'off'
+            },
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+              console.log(estado)
+              return fetch(`http://${server}/estado/${user.id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({idEspecial: resultado.id, estado: login, descripcion: ''}),
+            }).then(response => {
+                  if (!response.ok) {
+                    throw new Error(response.statusText)
+                  }
+                  return response.json()
+                })
+                .catch(error => {
+                  Swal.showValidationMessage(
+                    `Request failed: ${error}`
+                  )
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: `Actualizado`
+              })
+            }
+          })
+        }
+
+
+
+        /* Handle onClick *
+
+
+
+
+        /* The request */
+
+        wretch(`http://${server}/expediente/estados/${resultado.id}, ${user.id}`)
+        .get()
+        .json((data)=>handleResponse(data))
+        .notFound(error => { /* ... */ })
+        .unauthorized(error => { /* ... */ })
+        .error(418, error => { /* ... */ })
+        .res(response => {console.log(response)})
+        .catch(error => { /* uncaught errors */ })
+
+    }
   
     /* Styles */
 
@@ -31,8 +108,8 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
         borderRadius: '0.2em',
         minWidth: '7em',
         minHeight: '12em',
-        width: '7em',
-        height: 'auto',
+        width: '10em',
+        height: '15em',
         padding:'1em'
     }
 
@@ -124,7 +201,9 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
 
 
     return (
-    <div style={style}>
+    <div>
+      <button onClick={handleClickState} style={style}>
+        <h1 style={{fontSize: '24px', textAlign: 'center'}}>{`${resultado.idEspecial}`}</h1>
         <h3 style={{fontSize: '9px', textAlign: 'center'}}>{`${resultado.datos.apellido}, ${resultado.datos.nombres}`}</h3>
         <p style={{fontSize: '9px', textAlign: 'center'}}>{resultado.datos.dni}</p>
         <p style={{fontSize: '9px', textAlign: 'center'}}>{fechaFormat(resultado.datos.fechaAudiencia)}</p>
@@ -139,6 +218,7 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
             onClick={()=>handleClick()}
             style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: palette.rojo, fontSize: '9px', width: '40%'}}>PDF</button>
         </div>
+      </button>
     </div>
   )
 }
