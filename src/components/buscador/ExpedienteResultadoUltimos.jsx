@@ -17,6 +17,14 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
     /* useState para activar */
     const [activo, setActivo] = useState(false)
 
+    /* useState */
+    const emptyState = {
+      idEspecial: '',
+      estado: '',
+      descripcion: ''
+    }
+    const [estado, setEstado] = useState('')
+
     /* useContext */
 
     const {user, setUser} = useUserContext()
