@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { palette } from '../../themes/colors'
 import Swal from 'sweetalert2'
 import { useUserContext } from '../../context/UserContext'
+import { server } from '../../data/data'
 
 const Calendar = ({fechas}) => {
     
@@ -14,7 +15,7 @@ const Calendar = ({fechas}) => {
 
     const handleClick = (id) => {
         const fetchData = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/inhabilitarFecha/${id}, ${user.id}`);
+            const response = await fetch(`http://${server}/inhabilitarFecha/${id}, ${user.id}`);
             return await response.json();
         };
 
@@ -61,7 +62,7 @@ const Calendar = ({fechas}) => {
                         <button 
                             onClick={()=>handleClick(fecha.id)} 
                             style={
-                                {backgroundColor: palette.lightdarker, 
+                                {backgroundColor: fecha.disponible ? palette.lightdarker : palette.rojo, 
                                 flex: '1',
                                 height: '2em', 
                                 width: '2em', 

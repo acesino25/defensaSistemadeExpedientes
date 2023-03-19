@@ -9,5 +9,8 @@ export const palette = {
     archivado: '#D0DDF9',
     grisclaro: '#C3CFE0',
     rojo: '#E36862',
-    gris: '#A4C2E0'
+    gris: '#A4C2E0',
+    green: '#26AB3C',
+    rosa: '#E3ACF9',
+    morado: '#5D3891'
 }

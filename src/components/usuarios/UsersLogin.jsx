@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useUserContext } from '../../context/UserContext'
+import { actualizaciones } from '../../data/actualizaciones'
+import { server } from '../../data/data'
 import { palette } from '../../themes/colors'
 
 const UsersLogin = () => {
@@ -41,7 +43,7 @@ const UsersLogin = () => {
     /* onSubmit handle */
     const handleSubmit = (e) =>{
         e.preventDefault()
-        fetch("http://127.0.0.1:8000/users/login/", {
+        fetch(`http://${server}/users/login/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +92,15 @@ const UsersLogin = () => {
             <button type='submit' style={{backgroundColor: palette.lightdarker}}>Login</button>
             <a>Olvidé mi contraseña</a>
             </div>
-            </>) : (<h1>Ya estás logueado</h1>)
+            </>) : (<div>
+                {
+                    actualizaciones.map((actualizacion) => (
+                    <div style={{margin:'1em'}} > 
+                        <div dangerouslySetInnerHTML={{ __html: actualizacion.titulo }}></div> 
+                        <div dangerouslySetInnerHTML={{ __html: actualizacion.descripcion }}></div>    
+                    </div>))
+                }
+                </div>)
             }
         </form>
   )

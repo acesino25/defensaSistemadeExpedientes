@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { meses } from '../data/data'
+import { useUserContext } from '../context/UserContext'
+import { meses, server } from '../data/data'
 import { palette } from '../themes/colors'
 import Calendar from './calendar/Calendar'
 
@@ -19,6 +20,10 @@ const FormSelectFechas = () => {
         paddingTop: '1em',
         width: '10em'
     }
+
+    /* useContext */
+
+    const {user} = useUserContext()
 
     /* useState PARA FETCH */
 
@@ -46,6 +51,7 @@ const FormSelectFechas = () => {
     /* useRef HOOK FORMULARIO */
 
     const form = useRef(null)
+    const formEliminar = useRef(null)
 
 
     /* useEffect */
@@ -55,17 +61,27 @@ const FormSelectFechas = () => {
     var nextMonth = fecha.mes
 
     nextMonth = Number(nextMonth)
+    
     nextMonth = nextMonth+1
+    
     console.log(nextMonth)
     const desde = new Date(createString) /* Year month day */
-    const hasta = new Date(`${fecha.anio}-0${nextMonth}-01T00:00`) /* Year month day */
+    if(nextMonth < 10){
+        var hasta = new Date(`${fecha.anio}-0${nextMonth}-01T00:00`) /* Year month day */
+    }else if(nextMonth == 13){
+        var hasta = new Date(`${fecha.anio+1}-01-01T00:00`) /* Year month day */
+    }
+    else{
+        var hasta = new Date(`${fecha.anio}-${nextMonth}-01T00:00`) /* Year month day */
+    }
+    
 
     console.log(desde.toISOString())
     console.log(hasta.toISOString())
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/fechasDisponibles/${desde.toISOString()},${hasta.toISOString()}`);
+            const response = await fetch(`http://${server}/fechasDisponibles/${desde.toISOString()},${hasta.toISOString()}`);
             const json = await response.json();
             setFechas(json);
             setCargar(false)
@@ -85,6 +101,16 @@ const FormSelectFechas = () => {
         setCargar(true)
     }
 
+    const handleDelete = () => {
+
+        const fetchData = async() => {
+            const response = await fetch(`http://${server}/deshabilitarmes/${desde.toISOString()},${hasta.toISOString()}, ${user.id}`);
+            const json = await response.json();
+        }
+
+        fetchData()
+    }
+
   return (
     <div style={styleColumn}>
         <form onSubmit={(e)=>handleSubmit(e)} ref={form} style={style}>
@@ -98,14 +124,26 @@ const FormSelectFechas = () => {
             }
             
         </select>
-        <select onChange={(e)=>({...fecha, anio:e.target.value})} id='anio' name='anio'>
+        <select onChange={(e)=>(setFecha({...fecha, anio:e.target.value}))} id='anio' name='anio'>
             {
                 anios.map((anio)=>(<option value={anio}>{anio}</option>))
             }
         </select>
 
-        <button type='submit' style={{backgroundColor: palette.lightdarker, display: 'flex', justifyContent: 'center', alignItems:'center'}}>Fetch</button>
+            <button 
+            type='submit' 
+            style={{backgroundColor: palette.lightdarker, 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems:'center'}}>Fetch</button>
         </form>
+
+        <button
+            onClick={()=>handleDelete()}
+            style={{backgroundColor: palette.heavy, 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems:'center'}}>Bloquear MES</button>
 
         <Calendar fechas={fechas}></Calendar>
     </div>

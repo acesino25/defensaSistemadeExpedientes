@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { UserContext, useUserContext } from '../../context/UserContext'
+import { server } from '../../data/data'
 import { palette } from '../../themes/colors'
 import ExpedienteListarResultados from './ExpedienteListarResultados'
 import ExpedientesRecientes from './ExpedientesRecientes'
@@ -72,7 +74,14 @@ const ExpedienteBuscador = () => {
         }
 
         const fetchData = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/buscar/${buscar}, ${user.id}`);
+            
+            const encodedBuscar = encodeURIComponent(buscar);
+            const encodedUserId = encodeURIComponent(user.id);
+            const encodedExpediente = encodeURIComponent(encodedBuscar);
+            const encodedComma = encodeURIComponent(',');
+            const url = `http://${server}/buscar/${encodedExpediente}, ${user.id}`; /* necesario el espacio entremedio */
+            console.log(url)
+            const response = await fetch(url);
             const json = await response.json();
             setResultados(json);
             console.log(json)
@@ -91,12 +100,14 @@ const ExpedienteBuscador = () => {
             value={buscar}
             onChange={(e)=>(setBuscar(e.target.value))}
             ></input>
-            <button type='submit'>🔍</button>
+            <button type='submit' title='Buscar'>🔍</button>
+            <button type='button' title='Audiencias' style={{border: 'solid 2px black'}}><Link to='/audiencias'>📅</Link></button>
         </form>
     </div>
-        <h2>Creados recientemente:</h2>
-        <ExpedientesRecientes></ExpedientesRecientes>
         <ExpedienteListarResultados resultados={resultados}></ExpedienteListarResultados>
+        <h2>Creados recientemente:</h2> 
+        <ExpedientesRecientes></ExpedientesRecientes>
+        
     </div>
   )
 }

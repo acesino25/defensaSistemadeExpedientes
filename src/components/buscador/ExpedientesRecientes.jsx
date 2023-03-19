@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import wretch from "wretch"
+import { server } from '../../data/data'
 import ExpedienteResultadoUltimos from './ExpedienteResultadoUltimos'
 
 const ExpedientesRecientes = () => {
@@ -20,16 +21,26 @@ const ExpedientesRecientes = () => {
 
         /* Handle de response got from the api */
         
+        const fetchData = async () => {
+            const response = await fetch(`http://${server}/expedientes/10`);
+            return await response.json();
+        };
 
-        wretch('http://127.0.0.1:8000/expedientes/10')
+        fetchData().then((json)=>{
+            handleResponse(json)
+        });
+
+        
+        /* MODIFICADO POR UN FETCH MÁS GENÉRICO 
+        wretch(`http://${server}/expedientes/10`)
         .get()
         .json((data)=>{handleResponse(data);console.log(data)})
-
+        */
 
     }, [])
     
   return (
-    <div style={{display: 'flex', marginTop: '1em', flexWrap: 'wrap', gap: '1em', justifyContent: 'center'}}>
+    <div style={{display: 'flex', marginTop: '1em', flexWrap: 'wrap', gap: '2.5em', justifyContent: 'center', paddingBottom: '5em'}}>
         {
             resultado ? (
                 resultado.map((expediente)=>(

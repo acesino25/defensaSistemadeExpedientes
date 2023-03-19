@@ -37,3 +37,5 @@ export const meses = [
         texto: 'Diciembre'
     }
 ]
+
+export const server = '10.27.101.64:8000'

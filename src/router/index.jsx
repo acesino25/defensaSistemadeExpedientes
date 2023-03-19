@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { createBrowserRouter } from "react-router-dom";
+import TemporizadorPagina from "../components/temporizador/TemporizadorPagina";
 import LayoutMain from "../layout/layoutMain";
 import Admin from "../pages/Admin";
+import AdminContador from "../pages/AdminContador";
 import AdminCrearUsuario from "../pages/AdminCrearUsuario";
 import AdminFechasAudiencia from "../pages/AdminFechasAudiencia";
+import AudienciaReasignarPage from "../pages/AudienciaReasignarPage";
+import Audiencias from "../pages/Audiencias";
 import ConsultarExpediente from "../pages/ConsultarExpediente";
 import CreateExp from "../pages/CreateExp";
 import ExpCreatedSuccess from "../pages/ExpCreatedSuccess";
 
 import Home from "../pages/Home";
+import Temporizador from "../pages/Temporizador";
 import UserLogin from "../pages/UserLogin";
 
 
@@ -33,6 +38,9 @@ const router = createBrowserRouter(
             },{
                 path: '/login',
                 element: <UserLogin></UserLogin>
+            },{
+                path: '/audiencias',
+                element: <Audiencias></Audiencias>
             }
         ]
     },{
@@ -48,6 +56,15 @@ const router = createBrowserRouter(
             },{
                 path: '/admin/usuarios',
                 element: <AdminCrearUsuario></AdminCrearUsuario>
+            },{
+                path: '/admin/contador',
+                element: <AdminContador></AdminContador>
+            },{
+                path: '/admin/temporizador',
+                element: <Temporizador></Temporizador>
+            },{
+                path: '/admin/reasignarAudiencia',
+                element: <AudienciaReasignarPage></AudienciaReasignarPage>
             }
         ]
     }

@@ -8,7 +8,7 @@ const UserLogin = () => {
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        width: '20em',
+        width: '30em',
         height: 'auto',
         margin: '2em',
         borderRadius: '0.2em',

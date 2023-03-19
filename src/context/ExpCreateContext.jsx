@@ -6,6 +6,7 @@ export const ExpCreateExpContext = createContext()
 
 const ExpCreateExpProvider = ({children})=>{
     const [expCreate, SetExpCreate] = useState({
+        id: '',
         idEspecial: '',
         nombres: '',
         apellido: '',
@@ -14,6 +15,7 @@ const ExpCreateExpProvider = ({children})=>{
         telefono: '',
         dni: '',
         fechaAudiencia: '',
+        categoria: '',
         detalles: '',
         empresas: '',
         hipervulnerable: false,

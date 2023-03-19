@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Swal from 'sweetalert2'
+import { server } from '../../data/data'
 import { palette } from '../../themes/colors'
 
 const UsersCreateForm = () => {
@@ -53,7 +54,7 @@ const UsersCreateForm = () => {
 
         console.log(user)
 
-        fetch("http://127.0.0.1:8000/users", {
+        fetch(`http://${server}/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
