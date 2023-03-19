@@ -215,7 +215,9 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
         <h3 style={{fontSize: '9px', textAlign: 'center'}}>{`${resultado.datos.apellido}, ${resultado.datos.nombres}`}</h3>
         <p style={{fontSize: '9px', textAlign: 'center'}}>{resultado.datos.dni}</p>
         <p style={{fontSize: '9px', textAlign: 'center'}}>{fechaFormat(resultado.datos.fechaAudiencia)}</p>
-        <div style={{display: 'flex', justifyContent: 'space-between', gap: '5px'}}>
+        
+      </button>
+      <div style={{display: 'flex', justifyContent: 'space-between', gap: '5px', marginTop: '7px'}}>
             <button
             onClick={()=>handleClick2()}
             style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: palette.gris, fontSize: '9px', width: '40%'}}>Editar</button>
@@ -226,7 +228,6 @@ const ExpedienteResultadoUltimos = ({resultado}) => {
             onClick={()=>handleClick()}
             style={{display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: palette.rojo, fontSize: '9px', width: '40%'}}>PDF</button>
         </div>
-      </button>
     </div>
   )
 }
