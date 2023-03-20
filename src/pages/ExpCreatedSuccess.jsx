@@ -9,12 +9,13 @@ const ExpCreatedSuccess = () => {
 
   const {expCreate, SetExpCreate} = useExpContext()
 
-  /* useRef input domicilio */
-
   /* useState electronico */
 
   const [electronico, setElectronico] = useState(false)
   console.log(electronico)
+
+  /* useState Fojas */
+  const [fojas, setFojas] = useState(0)
 
   /* useState Empresas */
 
@@ -44,6 +45,11 @@ const ExpCreatedSuccess = () => {
           type="checkbox" />
         </label>
 
+        <label htmlFor="fojas">
+              Fojas:
+                <input type="number" id='fojas' name='fojas' onChange={(e)=>{setFojas(e.target.value)}} />
+        </label>
+
           {
             arrExp.map((empresa)=>{
               return (
@@ -51,9 +57,9 @@ const ExpCreatedSuccess = () => {
                   <input style={{padding:'2px'}} 
                   onChange={(e)=>setEmpresas(empresas.map((element)=> element.name === e.target.name ? {...element, mail: e.target.value} : element))}
                   type="text" name={empresa}></input>
-
-                  <PDFDownloadLink style={{display: 'flex', justifyContent: 'center', aligntItems: 'center', marginTop: '0.2em', marginBottom: '0.5em'}} document={<PDFNotificar datos={expCreate} setDatos={SetExpCreate} empresa={empresa} electronico={electronico} />} fileName='expediente.pdf'>
-                      <button style={{fontSize: '9px', backgroundColor: palette.rojo}}><b>Notificar a ✉:</b> {empresa}</button>
+                  
+                  <PDFDownloadLink style={{display: 'flex', justifyContent: 'center', aligntItems: 'center', marginTop: '0.2em', marginBottom: '0.5em'}} document={<PDFNotificar datos={expCreate} setDatos={SetExpCreate} empresa={empresa} empresas={empresas} fojas={fojas} electronico={electronico} />} fileName='expediente.pdf'>
+                      <button style={{fontSize: '9px', backgroundColor: palette.rojo}}><b>📩Notificar a:</b> {empresa}</button>
                   </PDFDownloadLink>
                 </label>)
             })
