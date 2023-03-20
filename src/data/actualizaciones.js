@@ -1,5 +1,9 @@
 export const actualizaciones = [
     {
+        titulo: '<h1>🚀 Actualizaciones:</h1> <h2>Bienvenido a defensa beta v0.6</h2><p><strong>(INFORMAR SI HAY ERRORES) Actualizaciones:</strong></p>',
+        descripcion: '<p>- <b>[CREADOS RECIENTES] </b>Ahora puedes ver número de expediente en recientes, y editar el estado para avisar que ya lo has entregado</p><p>- <b>[PDF] </b>En proceso de añadir cédulas de notificación</p>'
+    },
+    {
         titulo: '<h1>🌌 Actualizaciones:</h1> <h2>Bienvenido a defensa beta v0.5</h2><p><strong>(INFORMAR SI HAY ERRORES) Actualizaciones:</strong></p>',
         descripcion: '<p>- Se agregó [Optional] al a categoría de denuncia para aligerar la carga en la red</p>'
     },
