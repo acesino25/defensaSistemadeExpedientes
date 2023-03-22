@@ -12,5 +12,6 @@ export const palette = {
     gris: '#A4C2E0',
     green: '#26AB3C',
     rosa: '#E3ACF9',
-    morado: '#5D3891'
+    morado: '#5D3891',
+    rosapastel: 'F494EC'
 }

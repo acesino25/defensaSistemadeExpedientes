@@ -12,6 +12,7 @@ const NavBar = () => {
         <button><Link to='/crear'>Crear</Link></button>
         <button><Link to='/consultar'>Consultar</Link></button>
         <button><Link to='/admin'>Admin</Link></button>
+        <button><Link to='/actuaciones'><b>ACTUACIONES</b></Link></button>
         <button><Link to='/created'>PDF</Link></button>
         <Avatar sx={{ bgcolor: getRandomColor() }} style={{marginLeft:'1em'}}>{
           user.name[0]

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import TemporizadorPagina from "../components/temporizador/TemporizadorPagina";
 import LayoutMain from "../layout/layoutMain";
+import Actuaciones from "../pages/Actuaciones";
 import Admin from "../pages/Admin";
 import AdminContador from "../pages/AdminContador";
 import AdminCrearUsuario from "../pages/AdminCrearUsuario";
@@ -41,6 +42,9 @@ const router = createBrowserRouter(
             },{
                 path: '/audiencias',
                 element: <Audiencias></Audiencias>
+            },{
+                path: '/actuaciones',
+                element: <Actuaciones></Actuaciones>
             }
         ]
     },{

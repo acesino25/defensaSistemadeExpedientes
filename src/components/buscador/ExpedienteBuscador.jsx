@@ -4,6 +4,7 @@ import Swal from 'sweetalert2'
 import { UserContext, useUserContext } from '../../context/UserContext'
 import { server } from '../../data/data'
 import { palette } from '../../themes/colors'
+import ExpedienteActuacionesRecientes from './ExpedienteActuacionesRecientes'
 import ExpedienteListarResultados from './ExpedienteListarResultados'
 import ExpedientesRecientes from './ExpedientesRecientes'
 
@@ -105,6 +106,8 @@ const ExpedienteBuscador = () => {
         </form>
     </div>
         <ExpedienteListarResultados resultados={resultados}></ExpedienteListarResultados>
+        {/*<h2>Actuaciones:</h2>
+        <ExpedienteActuacionesRecientes></ExpedienteActuacionesRecientes>*/}
         <h2>Creados recientemente:</h2> 
         <ExpedientesRecientes></ExpedientesRecientes>
         
