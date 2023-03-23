@@ -1,5 +1,13 @@
 export const actualizaciones = [
     {
+        titulo: '<h1>🕵️‍♂️ Actualizaciones:</h1> <h2>Bienvenido a defensa beta v0.8</h2><p><strong>(INFORMAR SI HAY ERRORES) Actualizaciones:</strong></p>',
+        descripcion: '<p>-<b>[BUSCADOR MEJORADO] </b>Ahora puedes buscar palabras parecidas y un contador te indicará la cantidad de resultados</p>'
+    },
+    {
+        titulo: '<h1>📢 Actualizaciones:</h1> <h2>Bienvenido a defensa beta v0.7</h2><p><strong>(INFORMAR SI HAY ERRORES) Actualizaciones:</strong></p>',
+        descripcion: '<p>- <b>[ACTUACIONES PENDIENTES] </b>Ahora puedes ver las actuaciones pendientes en una solapa</p>'
+    },
+    {
         titulo: '<h1>🚀 Actualizaciones:</h1> <h2>Bienvenido a defensa beta v0.6</h2><p><strong>(INFORMAR SI HAY ERRORES) Actualizaciones:</strong></p>',
         descripcion: '<p>- <b>[CREADOS RECIENTES] </b>Ahora puedes ver número de expediente en recientes, y editar el estado para avisar que ya lo has entregado</p><p>- <b>[PDF] </b>En proceso de añadir cédulas de notificación</p>'
     },

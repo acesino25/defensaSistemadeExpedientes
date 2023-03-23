@@ -83,6 +83,12 @@ const ExpedienteBuscador = () => {
             const url = `http://${server}/buscar/${encodedExpediente}, ${user.id}`; /* necesario el espacio entremedio */
             console.log(url)
             const response = await fetch(url);
+
+            if (response.status === 400) {
+                setResultados(null)
+                throw new Error('No se encontraron resultados.');
+            }
+
             const json = await response.json();
             setResultados(json);
             console.log(json)
