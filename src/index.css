@@ -6,7 +6,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(90deg, rgba(133,132,152,1) 0%, rgba(33,53,71,1) 100%);
+  background: linear-gradient(180deg, rgba(33,53,71,1) 0%, rgba(15,15,48,1) 150%);
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,7 +47,7 @@ body {
   width: 100vw;
   height: auto;
   justify-content: center;
-  background-color: #192451;
+  background: linear-gradient(180deg, rgba(33,53,71,1) 0%, rgba(15,15,48,1) 150%);
 }
 
 h1 {
