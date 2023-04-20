@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #A6D5FF;
+  background: linear-gradient(90deg, rgba(133,132,152,1) 0%, rgba(33,53,71,1) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,7 +46,7 @@ body {
   width: 100vw;
   height: auto;
   justify-content: center;
-  background-color: #A6D5FF;
+  background-color: #192451;
 }
 
 h1 {
@@ -75,7 +75,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: black;
     background-color: #ffffff;
   }
   a:hover {

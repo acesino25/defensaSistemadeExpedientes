@@ -4,8 +4,8 @@ import ExpedienteActuacionesRecientes from '../components/buscador/ExpedienteAct
 const Actuaciones = () => {
   return (
     <div>
-        <h2>ACTUACIONES PENDIENTES:</h2>
-        <h3>Recuerda editar y eliminar la actuación luego de analizarla o haberla efectuado</h3>
+        <h2 style={{color: 'black'}}>ACTUACIONES PENDIENTES:</h2>
+        <h3 style={{color: 'black'}}>Recuerda editar y eliminar la actuación luego de analizarla o haberla efectuado</h3>
         <ExpedienteActuacionesRecientes></ExpedienteActuacionesRecientes>
     </div>
   )

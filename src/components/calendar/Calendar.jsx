@@ -50,6 +50,7 @@ const Calendar = ({fechas}) => {
                 const formattedDate = new Intl.DateTimeFormat("es-AR", options).format(date);
 
                 return(
+                    
                     <div style={{display: 'flex', alignItems: 'center', justifyContent:'center', gap: '1em', width:'90%'}}>
                         <div style={{width:'70%', display:'flex', justifyContent: 'center', alignItems: 'center'}}>
                         <p>{formattedDate}</p>

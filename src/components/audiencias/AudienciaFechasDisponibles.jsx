@@ -133,10 +133,10 @@ const AudienciaFechasDisponibles = ({desde, hasta, buscar}) => {
 
   return (
     respuesta == null ?(
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div style={{display: 'flex', flexDirection: 'column', color: 'black'}}>
         No hay fechas
     </div>):(
-        <div style={{display: 'flex', flexDirection: 'column'}}>
+        <div style={{display: 'flex', flexDirection: 'column', color:'white'}}>
             {
                 respuesta.map((fecha)=>{
 

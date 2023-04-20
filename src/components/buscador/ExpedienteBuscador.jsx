@@ -114,7 +114,7 @@ const ExpedienteBuscador = () => {
         <ExpedienteListarResultados resultados={resultados}></ExpedienteListarResultados>
         {/*<h2>Actuaciones:</h2>
         <ExpedienteActuacionesRecientes></ExpedienteActuacionesRecientes>*/}
-        <h2>Creados recientemente:</h2> 
+        <h2 style={{color: "black"}}>Creados recientemente:</h2> 
         <ExpedientesRecientes></ExpedientesRecientes>
         
     </div>

@@ -112,7 +112,7 @@ const FormSelectFechas = () => {
     }
 
   return (
-    <div style={styleColumn}>
+    <div style={{...styleColumn, marginBottom: '2em'}}>
         <form onSubmit={(e)=>handleSubmit(e)} ref={form} style={style}>
         <select onChange={(e)=>(setFecha({...fecha, mes:e.target.value}))} id='mes' name='mes'>
             {
@@ -145,7 +145,9 @@ const FormSelectFechas = () => {
             justifyContent: 'center', 
             alignItems:'center'}}>Bloquear MES</button>
 
-        <Calendar fechas={fechas}></Calendar>
+            <details>
+                <summary>Fechas</summary><Calendar fechas={fechas}></Calendar>
+            </details>
     </div>
   )
 }
