@@ -45,6 +45,9 @@ const router = createBrowserRouter(
             },{
                 path: '/actuaciones',
                 element: <Actuaciones></Actuaciones>
+            },{
+                path: '/home',
+                element: <Home />
             }
         ]
     },{

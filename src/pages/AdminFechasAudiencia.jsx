@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FormSelectFechas from '../components/FormSelectFechas'
+import { useUserContext } from '../context/UserContext'
 import {palette} from '../themes/colors'
 
 const AdminFechasAudiencia = () => {
+    const {user} = useUserContext();
+    useEffect(()=>{
+      
+        console.log(user)
+    },[user])
 
     const style = {
         display: 'flex',
@@ -16,7 +22,12 @@ const AdminFechasAudiencia = () => {
 
   return (
     <div style={style}>
-        <FormSelectFechas></FormSelectFechas>
+      {
+      user.permiso <= 3 ?
+          <div> DEBES SOLICITAR ESTO A TU JEFE DE AUDIENCIAS. NO COMPROMETAS AL SISTEMA </div>
+        :
+          <FormSelectFechas></FormSelectFechas>
+      }
     </div>
   )
 }
