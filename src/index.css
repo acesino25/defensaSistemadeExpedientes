@@ -5,7 +5,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: black;
   background: linear-gradient(180deg, rgba(33,53,71,1) 0%, rgba(15,15,48,1) 150%);
 
 
@@ -14,6 +14,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+input{
+  background-color: 'black';
+  color: 'white';
+}
+
+h1{
+  color: black;
+}
+
+h3{
+  color: black;
+}
+
+p{
+  color: black;
 }
 
 .center{
